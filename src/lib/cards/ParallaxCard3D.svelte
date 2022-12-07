@@ -28,70 +28,45 @@
 	}}
 >
 	<div class="card" style={`transform: rotateY(${hori}deg) rotateX(${vert}deg);`}>
-		<h1>T</h1>
+		<img
+			src="https://emshop.pl/pol_pm_LEGO-Star-Wars-Gwiezdne-wojny-Mandalorianin-i-the-child-baby-Yoda-75317-4648_4.jpg"
+			alt="baby yoda toy"
+			class="product-img"
+		/>
+		<span class="product-title"
+			>LEGO Star Wars Gwiezdne wojny Mandalorianin i the child baby Yoda 75317</span
+		>
 	</div>
 </div>
 
 <style lang="scss">
+	.product-img {
+		width: 100%;
+	}
+
 	.perspective {
 		transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 		perspective: 500px;
 		&:hover {
 			transform: scale(1.3);
+			.product-title {
+				transform: translateZ(35px);
+			}
 		}
 	}
 	.card {
-		width: 270px;
-		height: 413px;
+		width: 200px;
+		height: 313px;
+		padding: 1.5rem 0.75rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 
-		box-shadow: 0 70px 63px -60px #494848;
+		box-shadow: 0 70px 63px -60px #8d4689;
 		transform-style: preserve-3d;
 		transition: transform 0.05s linear;
+		background-color: white;
 
-		border: 1px solid grey;
-
-		.thumb {
-			background-size: cover;
-			height: 100%;
-			width: 100%;
-			border-radius: 15px;
-
-			&:after {
-				background: inherit;
-				content: '';
-				display: block;
-				position: absolute;
-				left: -60px;
-				top: 40px;
-				width: 100%;
-				height: 108%;
-				z-index: -1;
-				filter: blur(55px);
-			}
-		}
-
-		h1 {
-			font-size: 40px;
-			font-weight: 100;
-			transform: translateZ(30px);
-		}
-
-		span {
-			position: absolute;
-			bottom: 40px;
-			right: -280px;
-			font-size: 37px;
-			font-weight: 600;
-			transform: translateZ(35px);
-		}
-	}
-
-	img {
-		margin: auto;
-		display: block;
-		border-radius: 15px;
+		// border: 1px solid grey;
 	}
 </style>
