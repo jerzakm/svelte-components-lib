@@ -1,18 +1,12 @@
 <script lang="ts">
-	//   var o = $(".card");
-	// $("#top").on("mousemove", function (t) {
-	//     var e = -($(window).innerWidth() / 2 - t.pageX) / 30,
-	//         n = ($(window).innerHeight() / 2 - t.pageY) / 10;
-	//     o.attr("style", "transform: rotateY(" + e + "deg) rotateX(" + n + "deg);-webkit-transform: rotateY(" + e + "deg) rotateX(" + n + "deg);-moz-transform: rotateY(" + e + "deg) rotateX(" + n + "deg)")
-	// })
+	let hori = 0;
+	let vert = 0;
 
-	let a = 0;
-	let b = 0;
-	let c = 0;
+	let deadzone = 0.17;
+	let angle = 10;
 
-	let element: HTMLDivElement;
+	let element: HTMLElement;
 	$: {
-		console.log(b);
 	}
 </script>
 
@@ -22,12 +16,19 @@
 	on:mousemove={(e) => {
 		const rect = element.getBoundingClientRect();
 
-		a = -(e.offsetX - rect.width / 2) / 10;
-		b = (e.offsetY - rect.height / 2) / 20;
+		vert =
+			(Math.min(Math.max((e.pageY - rect.top) / rect.height, deadzone), 1 - deadzone) - 0.5) *
+			(1 / (1 - deadzone * 2)) *
+			angle;
+
+		hori =
+			-(Math.min(Math.max((e.pageX - rect.left) / rect.width, deadzone), 1 - deadzone) - 0.5) *
+			(1 / (1 - deadzone * 2)) *
+			angle;
 	}}
 >
-	<div class="card" style={`transform: rotateY(${a}deg) rotateX(${b}deg) rotateZ(${c}deg);`}>
-		<h1>Test</h1>
+	<div class="card" style={`transform: rotateY(${hori}deg) rotateX(${vert}deg);`}>
+		<h1>T</h1>
 	</div>
 </div>
 
